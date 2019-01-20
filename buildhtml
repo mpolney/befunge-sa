@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+INFILE="$1"
+BASENAME=`basename "$INFILE" .mml`
+OUTFILE="$BASENAME.html"
+
+echo "$INFILE"
+mml --infile="$INFILE" --infmt=mml --outfile="$OUTFILE" --outfmt=html
+

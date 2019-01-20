@@ -1,0 +1,76 @@
+{@page{head->
+    {link
+        {rel->stylesheet}
+        {href->style.css}
+        {type->text/css}
+    }
+}{body->
+    {h2->Befunge-93 Analyzer}
+    {p->
+        This is a simple static analyzer for
+        {a{href->https://en.wikipedia.org/wiki/Befunge}->Befunge-93}
+        which generates and displays
+        {a{href->https://en.wikipedia.org/wiki/Control_flow_graph}->
+            control flow graphs
+        } (CFGs) here in your browser.
+        It also generates C code from the CFGs.
+    }
+    {div{id->input_screen}->
+        {span{class->example}{id->factorial}{style->display: none}->
+            {#readfile->progs/factorial.bf}}
+        {span{class->example}{id->sieve}{style->display: none}->
+            {#readfile->progs/sieve.bf}}
+        {span{class->example}{id->guess}{style->display: none}->
+            {#readfile->progs/guess.bf}}
+        {span{class->example}{id->chess}{style->display: none}->
+            {#readfile->progs/chess.bf}}
+        {span{class->example}{id->wumpus}{style->display: none}->
+            {#readfile->progs/wumpus.bf}}
+        {span{class->example}{id->helloworld}{style->display: none}->
+            {#readfile->progs/helloworld.bf}}
+
+        {div{class->textarea_label}->Program Text:}
+
+        {div{class->info_box}{id->example_desc}->
+            Enter your Befunge-93 program here.
+        }
+
+        {div{style->display: flex; align-items: flex-start;}->
+            {div{class->ace_editor}{id->editor}->}
+            {div{id->example_list}->}
+        }
+        {a{id->analyze}{class->button}->Analyze Program}
+
+        {script
+            {src->https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js}
+            {type->text/javascript}
+            {charset->utf-8}->
+        }
+
+    }
+    {div{id->working_screen}{style->display: none}->
+        {h3->Working...}
+    }
+    {div{id->analysis_screen}{style->display: none}->
+        {div{class->textarea_label}->{span{id->stats_bb_count}->} basic blocks}
+        {div{id->network}->}
+        {a{class->button}{id->edit}->Edit Program Text}
+        {a{class->button}{id->generate_c}->Generate C Code}
+    }
+    {div{id->code_screen}{style->display: none}->
+        {div{class->ace_editor}{id->generated_c_editor}->}
+        {a{class->button}{name->back_to_analysis}->Back to Analysis}
+    }
+
+    {script{src->init_editor.js}{type->text/javascript}->}
+    {script
+    	{type->text/javascript}
+    	{src->https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js}->
+    }
+    {link
+    	{rel->stylesheet}
+    	{type->text/css}
+    	{href->https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.css}
+    }
+    {script{src->befunge.js}->}
+}}
