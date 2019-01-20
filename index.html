@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html><html id="root"><head><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link href="style.css" rel="stylesheet" type="text/css" /><title>Static Analyzer for Befunge-93</title><link href="https://fonts.googleapis.com/css?family=Coiny|Electrolize|Libre+Barcode+128+Text|Orbitron|Play|Russo+One|Staatliches|Teko|Vollkorn" rel="stylesheet" type="text/css" /><link href="style.css" rel="stylesheet" type="text/css" /></head><body><div class="main_content_unpadded"><div class="main_content"><div class="large_divider"></div><h2>Befunge-93 Analyzer</h2><p>This is a simple static analyzer for <a href="https://en.wikipedia.org/wiki/Befunge">Befunge-93</a> which generates and displays <a href="https://en.wikipedia.org/wiki/Control_flow_graph">control flow graphs</a> (CFGs) here in your browser. It also generates C code from the CFGs.</p><div id="input_screen"><span class="example" id="factorial" style="display: none">&amp;&gt;:1-:v v *_$.@ 
+ ^    _$&gt;\:^</span> <span class="example" id="sieve" style="display: none">2&gt;:3g&quot; &quot;-!v\  g30          &lt;
+ |!`&quot;O&quot;:+1_:.:03p&gt;03g+:&quot;O&quot;`|
+ @               ^  p3\&quot; &quot;:&lt;
+2 234567890123456789012345678901234567890123456789012345678901234567890123456789</span> <span class="example" id="guess" style="display: none">vv  &lt;      &lt;                                                                   
+    2                                                                          
+    ^  v&lt;                                                                      
+ v1&lt;?&gt;3v4                                                                      
+    ^   ^                                                                      
+&gt;  &gt;?&gt;  ?&gt;5^                                                                   
+    v   v                                                                      
+ v9&lt;?&gt;7v6                                                                      
+    v  v&lt;                                                                      
+    8                                                                          
+    &gt;  &gt;   ^                                                                   
+ vv  &lt;      &lt;                                                                  
+     2                                                                         
+     ^  v&lt;                                                                     
+  v1&lt;?&gt;3v4                                                                     
+     ^   ^                                                                     
+ &gt;  &gt;?&gt;  ?&gt;5^                                                                  
+     v   v      v          ,*25         &lt;&lt;                                     
+  v9&lt;?&gt;7v6                              ,,                                     
+     v  v&lt;                              &quot;&quot;                                     
+     8                                  &gt;&lt;                                     
+     &gt;  &gt;   ^                           &quot;&quot;v                                    
+  &gt;*:.&gt;0&quot;!rebmun tupnI&quot;&gt;:#,_$25*,:&amp;:99p`|^&lt;       _0&quot;!niw uoY&quot;&gt;:#,_$25*,@      
+      ^         &lt;                       &gt;:99g01-*+^</span> <span class="example" id="chess" style="display: none">**********&gt;9&quot;+  &quot;,&gt;,,1-:v  &gt;:,,&quot;@&quot;  v&gt;1+:4`!v&gt;1~5v&gt;01g1+802g-g:&quot;a&quot;`  v&gt;+03g1+8v
+*RNBQKBNR*,       ^&quot;-+&quot; _v &quot;v:+1,&quot; &quot;&lt; v4-1~:_^v+5&lt; &gt;_&quot;(: niw U&quot;&gt;:#,_@#^!+`g40&lt;0
+*PPPPPPPP*+vp00:+1g  &lt;p  &lt;  &gt;:,&quot;G&quot;`!|p&gt;4*%:7`v-&gt;$$^|!-&quot;K&quot;:g-g408+1g30&lt;&gt;:&quot;p&quot;-7^4
+*........*5&gt;8`!55+,#v_9&quot;+  &quot;, v v5 $&lt;^\0\_v#!&lt;_^   &gt;:&quot;.&quot;-!#v_&quot;a&quot;`#v_#|^v&quot;.&quot;p-g&lt;
+*........*5v9.-\9g00&lt;#v!:-1,, &lt; &gt;5+, ^    v                &gt;# $0 #&lt;^#&lt; &gt;01g1+8v
+*........* &gt;&quot;|&quot;,1-::!|&gt;#v_&quot;+-&quot;^             v&quot;q&quot;+7gp90+&quot;5&quot;*&quot;e&quot;g&lt;&lt;v01p9p8pp-g20&lt;
+*........* ^,gg00-\9 &lt;  &gt;55^v      ,7 $$$ &lt; &gt; %00p09g&quot;@&quot;4*+:8%v9|&lt;`8\9p00:+1g$&lt;
+*pppppppp*^                 &lt; &gt;  &gt;                             ^&gt;1-:::00g9*+\!|
+*rnbqkbnr*&gt;:&quot;`&quot;+,04g:&quot;9&quot;\-,p^    |-&quot;P&quot;_v#-&quot;N&quot;:_v#-&quot;K&quot;:_v#-&quot;B&quot;&lt;1 ^p90+g90*gg00\&lt;
+**********^g30pg20g10&quot;.&quot;+!+`g&lt;   &gt;2g1+v&gt;$2v%2g$&lt;       v&lt; &gt;gv:&gt;+02p8/8%1+:01p0v
+&gt;01g:&quot;`&quot;+,02g:&quot;9&quot;\-,g:&quot;P&quot;-804^ v%2gp40&lt;   &gt;100g2/2%#v_v$| %2&lt;|-&quot;Q&quot;:_v#-&quot;R&quot;:gg2&lt;
+^_&quot;!niw I&quot;&gt;:#,_@             v _g2/2%2*vv0_v#%2/4g00&lt;\&lt; &gt;#^ #&lt;     v&gt;#$ &lt;
+ ^-&quot;k&quot;_$                 #v_  ^v:+g10-1&lt;&gt;\-&gt;\00g8/2%  v&gt;g2/2%2*1-0v&gt; g2/2%2*1-v
+^_   0^`&quot;a&quot;:_v#-&quot;.&quot;:gg40g3&lt;  1 &gt;:03p0`\04gg&quot;a&quot;  vv0_v#&lt;v-1*2%2/4g0&lt;v_v#%2/4g00&lt;
+ ^ !p80:+1g8$&lt;&gt;04g0`*904g`*^ &gt;g:03p04gg&quot;.&quot;-! v  `&gt;\-&gt;0vv           &lt;\&lt;&gt;4pg8/8%v
+              ^*`g309`0g3  &lt;  v*%2/2g00!-3g40_v&lt;*v0+g1&lt;&gt;05p06p1g03p2g0^  v_v#:&lt;
+Chess program on Befunge&#39;93  &gt; 3g04g1+:04pgv  3 !&gt;3p02gv v!p30:+g50g30-1 &lt; &gt;v
+&quot;Hungry dragon&quot; v1.1         |&lt;  vp3_v#-&quot;.&quot;&lt;  p|&lt; vp40+&lt;v_03g04g06g+:04pg&quot;.&quot;-!|
+by mtve at frox25.dhs.org  ^ &lt;   &lt;   &lt;        &lt;&lt;  &lt;    $&lt;                   &lt; &lt;</span> <span class="example" id="wumpus" style="display: none">0&gt;:48*-   #v_$&gt;0145*p0&gt;:045*p:48*1--#v_$7&gt;44*&gt;?&lt;    _$++++\1-:#^_v &gt;&gt;^        &gt;
+ ^+1p*73\0:&lt;          ^+1  _v#`2g*73:&lt;&gt;:2/ :v &gt;0\2/:^           v&lt; ^&quot;TWANG..&quot;&lt;
+145*g1+:145*p8 8*`     #v_ $&gt;  &gt;  44*&gt;?&lt;    _$++++:37*g2`!#v_    &gt;           
+&gt;7*p:37*g37*+p^vg*540+1g$#*73g&lt;^$&lt;   &lt;&gt;0\2/:^v _v#!`g*540: &lt;    # &gt;&quot;rra ehT.&quot;^ 
+^3\+1g*73::p*73&lt;  &gt;+2*+p# 045*^      ^       &lt; &lt;&gt;:045*g64*1-g-#v_^   &gt;:#,_$$  ^
+C.&quot;*520&lt;p*5400&lt;   ^56g*73:g*540:_^#-g*46g*540:_^# -g*2+56g*540:&lt;#     v&quot;re A,B,
+A(&quot;25*&quot;&quot;v&gt;5*p ^v1$&lt;     &gt;025*&quot;.niaga gniyrT .sevac gnikam pu dewercS&quot;^&gt;&quot;iF :)CB
+ A,B,C.&quot;&lt;^  41 &lt; _^#:p*7303p*37\5p*37\5p*37\5p*37\4p*37\4p*37\4$&lt;v2&quot;(abc): Move
+*73g+2* 73:\g*73g+1*73:,*52.+1:g*540$_,#! #:&lt;&quot;Cave &quot;0&lt;$_,#! #:&lt;*5&lt;v30g*73g*46\g
+540_v#- g-1*46&lt;v&quot;bats.&quot;*25_v#g*5440p*54:p*54:p*54:p*5450p*5440p*54&lt;     v   4g*
+  vv&lt; &gt; :045*g^&gt;&quot; raeh uoY&quot;&gt;545*g!#v_25*&quot;.tfard &quot;v&gt;v #&quot;Tunnels lead to:&quot;&gt;#&lt;6*g-
+20_v$_^#!-g+1*73g*540:g*541$_,#! #:&lt;&quot;You feel a&quot; &lt;,:&gt;$&quot;:A&quot;,,045*g:65+2*g1v^,:*5
+  1&gt;&gt;025*&quot;!supmuw a l&quot; v&gt;        `#v_v v_\$37*1++v^_^#v-1*46:,,&quot;B:&quot;,*52.+&lt;     
+2v^ $_,#! #:&lt;&quot;You smel&quot;&lt;2v` 2:-&quot;A&quot;$&lt;   &lt;!vg\g*540&lt;    &gt;g1+.&quot;:C&quot;25*,,,64*g1+.&quot;&gt;&quot;
+v&gt;5*,,&gt; ~:25*-!#v_:&quot;a&quot;-:^&gt;#v_:01 vv0:&lt;&gt;`^&gt;:045*p37*g: 4- #v_$025*&quot;!tab tnaig a&quot;
+&lt;&gt;_#&quot;#^^#      $&lt;&quot;0$       _v#!`-&lt;&gt; 1-^v$_,#! #:&lt;&quot;Yo&quot;  &quot;u&#39;ve been snatched by &quot;
+&quot;ni llef uoY...eeeeeeEEEEEE&quot; &quot;Y&quot;&gt;:#,_$@0    &gt;:2/: v&gt; ^   &lt;&gt;5-#v_025*&quot;!tip a ot&quot;
+\37*g5-#v_  $&gt;  $$&gt;  $$&gt;$           &gt;  &gt;44*&gt;?&lt;    _$++++: :  045*g\:145*g\:37*g
+&quot; net&quot;v&quot;&gt;4-!#^_-!#^_-!#^_\0+# 45 *p#^ #1 #&lt;v&gt;0\2/:^#v541g *5\0&lt; &gt;&quot;!supmuw a yb&quot;
+:#,_$@&gt;&quot;ae neeb ev&#39;uoY...PLUG&quot;  ^   &gt;:#,_$^&gt;    &gt;  ^&gt;*g-#^_025*&gt;?&gt;v&gt;&quot;llik uoY&quot;&gt;
+                            &gt;37*1++v^&quot;You bumped the wumpus.&quot;   ^#&lt;^&quot;ed the w&quot;&lt;
+                                v40&lt;^&quot;The crafty wumpus dodged your arrow&quot;  &lt; &quot;
+                                5&gt;0\25*\#v_    #^                     #&lt;&quot;!&quot;&gt;?&lt;u
+                                *^-g*5&lt;  &gt;&quot;.gnihtyna tih t&#39;ndid wo&quot;vv_$^v&quot;s&quot;&lt; &quot;
+                                &gt;g\g14^&gt;_v#&quot;  &gt;:2/ :v        &quot;0&lt;  v&lt;,:  &gt;&quot;upm&quot;^</span> <span class="example" id="helloworld" style="display: none">64+&quot;!dlroW ,olleH&quot;&gt;:#,_@</span><div class="textarea_label">Program Text:</div><div class="info_box" id="example_desc">Enter your Befunge-93 program here.</div><div style="display: flex; align-items: flex-start;"><div class="ace_editor" id="editor"></div><div id="example_list"></div></div><a class="button" id="analyze">Analyze Program</a><script charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" type="text/javascript"></script></div><div id="working_screen" style="display: none"><h3>Working...</h3></div><div id="analysis_screen" style="display: none"><div class="textarea_label"><span id="stats_bb_count"></span> basic blocks</div><div id="network"></div><a class="button" id="edit">Edit Program Text</a> <a class="button" id="generate_c">Generate C Code</a></div><div id="code_screen" style="display: none"><div class="ace_editor" id="generated_c_editor"></div><a class="button" name="back_to_analysis">Back to Analysis</a></div><script src="init_editor.js" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js" type="text/javascript"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.css" rel="stylesheet" type="text/css" /><script src="befunge.js"></script></div></div></body></html></html>
