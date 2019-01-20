@@ -21,6 +21,6 @@ either by using the provided Makefile, or like this:
 
 [1]: https://en.wikipedia.org/wiki/Befunge
 [2]: https://en.wikipedia.org/wiki/Control_flow_graph
-[3]: https://spectralforms.com/michael/befunge-sa/demo/befunge.html
+[3]: https://mpolney.github.com/befunge-sa/
 [4]: https://github.com/mpolney/mml/
 [5]: https://www.haskell.org/cabal/
